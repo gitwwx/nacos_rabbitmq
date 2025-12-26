@@ -1,0 +1,23 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: user-service
+  config:
+    import: nacos:${spring.application.name}   # 加载通用配置
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 0475ca81-cb6f-454e-9882-5972fee62210  # 命名空间隔离
+        group: CLOUD_DEMO
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        group: CLOUD_DEMO
+        namespace: 0475ca81-cb6f-454e-9882-5972fee62210
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest

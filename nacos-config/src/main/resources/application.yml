@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: nacos-config
+  config:
+    import: nacos:${spring.application.name}   # 加载通用配置
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      config:
+        server-addr: 127.0.0.1:8848
+        file-extension: yaml
+        namespace: 0475ca81-cb6f-454e-9882-5972fee62210
+        group: CLOUD_DEMO
+      # 服务发现（Discovery）设置
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 0475ca81-cb6f-454e-9882-5972fee62210
+        group: CLOUD_DEMO  # 服务注册分组（关键！）

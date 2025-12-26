@@ -1,0 +1,21 @@
+server:
+  port: 9090
+spring:
+  profiles:
+    active: dev
+  application:
+    name: gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        namespace: 0475ca81-cb6f-454e-9882-5972fee62210  # 命名空间隔离
+        group: CLOUD_DEMO
+    gateway:
+      routes:
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/api/users/**
+          filters:
+            - StripPrefix=1
